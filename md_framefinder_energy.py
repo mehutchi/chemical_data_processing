@@ -14,6 +14,35 @@ requiring an input file to save a batch.script into each batch directory and
 a run.in file to copy into each Frame directory.
 '''
 
+# example batch.script:
+'''
+#!/bin/bash -l
+#SBATCH -p gpu
+#SBATCH -N 1
+#SBATCH -n 1
+#SBATCH -c 2
+#SBATCH --gres=gpu:1
+#SBATCH --mem=8000
+#SBATCH -J tera
+
+#SBATCH --no-requeue
+
+# Record job info
+echo -e "$SLURM_JOB_ID  $HOSTNAME  $(pwd)" >> ~/.myslurmhistory
+
+module load intel cuda14
+export TeraChem=/home/leeping/opt/terachem/current
+export PATH=$TeraChem/bin:$PATH
+export LD_LIBRARY_PATH=$TeraChem/lib:$LD_LIBRARY_PATH
+
+for d in frame*/
+do
+cd $d
+terachem  run.in &> run.out
+cd ..
+done
+'''
+
 current_dir = os.getcwd() + '/'
 # read in coors.xyz file
 #file_name = 'coors.xyz'
