@@ -22,5 +22,9 @@ The optimized BO and/or coordinate trajectories would then be used in codes such
 
 ## tinker_vs_openmm_FIXED.py
 
+This code helped run diagnostics to help troubleshoot creating equivalent force fields in different engines: one force field in AMOEBA style and the other in OpenMM. Both of these force fields have slightly different parameters and units, so this program converted where necessary and created frame-by-frame energy plots (total, bond, angle, VDW, etc.) to reveal any differences between the force fields.
 
+Obtaining and ensuring equivalent force fields in different engines was necessary in order to use the force field optimization tool ForceBalance, which can refine force field parameters across multiple engines while utilizing the strengths of each engine for different optimization tasks.
+
+The process of creating a force field in the AMOEBA engine then converting it into OpenMM was delicate and required close monitoring of the different energy parameters.
 
