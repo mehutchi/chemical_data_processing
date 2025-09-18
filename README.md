@@ -16,7 +16,7 @@ This code extracts either coordinate or bond order (BO) data from bulk Terachem 
 
 This code saves time by automatically parsing the vast structure to extract relevant information into a single file of the same form of a MD trajectory or BO results output.
 
-Coordinates are very structured and follow the same patterns throughout, however BO results are only printed if they exceed a threshold, and therefore are a bit more challenging to obtain due to their variable length.
+Coordinate files (.xyz) are very structured and follow the same patterns throughout, however BO results are only printed if they exceed a threshold, and therefore BO files are a bit more challenging to navigate due to their variable length. This code handles the variable amount of BO entries for each frame.
 
 The optimized BO and/or coordinate trajectories would then be used in codes such as https://github.com/mehutchi/bond_order_time_series.
 
